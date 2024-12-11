@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2v8g5mqb3xi6"]
+
+[ext_resource type="PackedScene" uid="uid://b1lrhd8q2bbk2" path="res://Assets/Modelos/Player.tscn" id="1_dcpj7"]
+[ext_resource type="Texture2D" uid="uid://b27hhjmkpd18y" path="res://Assets/Cenas/Space/Skybox/panorama_image.png" id="2_w78kr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f8iii"]
+panorama = ExtResource("2_w78kr")
+
+[sub_resource type="Sky" id="Sky_w61hc"]
+sky_material = SubResource("PanoramaSkyMaterial_f8iii")
+
+[sub_resource type="Environment" id="Environment_mbgdm"]
+background_mode = 2
+sky = SubResource("Sky_w61hc")
+
+[node name="Space" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_dcpj7")]
+
+[node name="SceneCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9.32616)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mbgdm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(4.22828, 0, 0, 0, 2.13032, 0, 0, 0, 1, 0, 0, -10.7781)
