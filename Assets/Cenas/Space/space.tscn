@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2v8g5mqb3xi6"]
+[gd_scene load_steps=7 format=3 uid="uid://c2v8g5mqb3xi6"]
 
 [ext_resource type="PackedScene" uid="uid://b1lrhd8q2bbk2" path="res://Assets/Modelos/Player.tscn" id="1_dcpj7"]
 [ext_resource type="Texture2D" uid="uid://b27hhjmkpd18y" path="res://Assets/Cenas/Space/Skybox/panorama_image.png" id="2_w78kr"]
@@ -13,6 +13,8 @@ sky_material = SubResource("PanoramaSkyMaterial_f8iii")
 background_mode = 2
 sky = SubResource("Sky_w61hc")
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0eikx"]
+
 [node name="Space" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dcpj7")]
@@ -25,5 +27,14 @@ environment = SubResource("Environment_mbgdm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(4.22828, 0, 0, 0, 2.13032, 0, 0, 0, 1, 0, 0, -10.7781)
+[node name="Playfield" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 5.25569)
+collision_layer = 2
+
+[node name="Boundary1" type="CollisionShape3D" parent="Playfield"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.322437)
+shape = SubResource("WorldBoundaryShape3D_0eikx")
+
+[node name="Boundary2" type="CollisionShape3D" parent="Playfield"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -14.034)
+shape = SubResource("WorldBoundaryShape3D_0eikx")

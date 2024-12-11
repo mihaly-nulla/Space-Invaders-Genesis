@@ -8,6 +8,7 @@ size = Vector3(3, 1, 3)
 [node name="Player" type="Node3D"]
 
 [node name="PlayerController" type="CharacterBody3D" parent="."]
+collision_mask = 3
 
 [node name="MovementController" type="Node" parent="PlayerController" node_paths=PackedStringArray("player")]
 script = ExtResource("2_wakya")
