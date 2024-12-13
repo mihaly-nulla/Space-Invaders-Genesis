@@ -14,12 +14,14 @@ const MINIMUM_BOOST_DISTANCE = 5.0
 var direction_vector : Vector3
 var velocity_vector : Vector3
 var THROTTLE_VALUE = 0.0
-var LIMIT_REACHED = false
+
+@onready var guns = [$/root/Space/Player/PlayerController/Gun1, $/root/Space/Player/PlayerController/Gun2]
+@onready var main = get_tree().current_scene
+var Bullet = preload("res://Assets/Modelos/PlayerBullet.tscn")
 
 func throttle():
 	direction_vector.z = Input.get_action_strength("throttle_down") - Input.get_action_strength("throttle_up")
 	THROTTLE_VALUE = THROTTLE_MAXIMUM_ACCEL
-	LIMIT_REACHED = false
 func move_player(delta):
 	velocity_vector.x = move_toward(velocity_vector.x, direction_vector.x * CURRENT_SPEED, ACCELERATION)
 	velocity_vector.y = move_toward(velocity_vector.y, direction_vector.y * CURRENT_SPEED, ACCELERATION)
@@ -44,15 +46,13 @@ func _physics_process(delta):
 
 func _input(event):
 	var travelled_distance = player.global_transform.origin.z
-	print("PLAYER Z: ", travelled_distance)
 	if event.is_action("movement_event"):
 		direction_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-		
-		if event.is_action("throttle_up") or event.is_action("throttle_down"):
-			if travelled_distance > -10.0 or travelled_distance <= 0.0:
-				throttle()
-		else:
-			THROTTLE_VALUE = 0.0
-			velocity_vector.z = move_toward(velocity_vector.z, 0.0, ACCELERATION * 50.0)
+		throttle()
 		direction_vector = direction_vector.normalized()
+	if event.is_action("shoot_guns"):
+		for gun in guns:
+			var bullet = Bullet.instantiate()
+			main.add_child(bullet)
+			bullet.global_transform = gun.global_transform

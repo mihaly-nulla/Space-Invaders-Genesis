@@ -5,26 +5,27 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_thguu"]
 size = Vector3(1, 1, 4.17993)
 
-[node name="Enemy" type="Node3D"]
+[node name="EnemyController" type="CharacterBody3D" groups=["Enemies"]]
 script = ExtResource("1_k8w08")
 
-[node name="EnemyController" type="CharacterBody3D" parent="."]
+[node name="Gun1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyController"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(4.84449, 0, 0, 0, 1.89402, 0, 0, 0, 1, 0, 0, -0.873413)
 shape = SubResource("BoxShape3D_thguu")
 
-[node name="EnemyMeshRoot" type="Node3D" parent="EnemyController"]
+[node name="EnemyMeshRoot" type="Node3D" parent="."]
 
-[node name="Base" type="CSGBox3D" parent="EnemyController/EnemyMeshRoot"]
+[node name="Base" type="CSGBox3D" parent="EnemyMeshRoot"]
 transform = Transform3D(3.34245, 0, 0, 0, 1.39091, 0, 0, 0, 1, 0, 0, -1.22327)
 size = Vector3(1, 1, 3.44653)
 
-[node name="Engine1" type="CSGCylinder3D" parent="EnemyController/EnemyMeshRoot"]
+[node name="Engine1" type="CSGCylinder3D" parent="EnemyMeshRoot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
 
-[node name="Turret" type="CSGSphere3D" parent="EnemyController/EnemyMeshRoot"]
+[node name="Turret" type="CSGSphere3D" parent="EnemyMeshRoot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686962, -0.440786)
 
-[node name="Engine2" type="CSGCylinder3D" parent="EnemyController/EnemyMeshRoot"]
+[node name="Engine2" type="CSGCylinder3D" parent="EnemyMeshRoot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2, 0, 0)
