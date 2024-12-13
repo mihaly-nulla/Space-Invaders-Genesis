@@ -15,7 +15,7 @@ var direction_vector : Vector3
 var velocity_vector : Vector3
 var THROTTLE_VALUE = 0.0
 
-@onready var guns = [$/root/Space/Player/PlayerController/Gun1, $/root/Space/Player/PlayerController/Gun2]
+@onready var guns = [$/root/Space/Player/Gun1, $/root/Space/Player/Gun2]
 @onready var main = get_tree().current_scene
 var Bullet = preload("res://Assets/Modelos/PlayerBullet.tscn")
 
