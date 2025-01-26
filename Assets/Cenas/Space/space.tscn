@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2v8g5mqb3xi6"]
+[gd_scene load_steps=9 format=3 uid="uid://c2v8g5mqb3xi6"]
 
 [ext_resource type="PackedScene" uid="uid://b1lrhd8q2bbk2" path="res://Assets/Modelos/Player.tscn" id="1_dcpj7"]
 [ext_resource type="Texture2D" uid="uid://b27hhjmkpd18y" path="res://Assets/Cenas/Space/Skybox/panorama_image.png" id="2_w78kr"]
 [ext_resource type="PackedScene" uid="uid://b2e4iaulufxxs" path="res://Assets/Modelos/EnemySpawner.tscn" id="3_u8fmw"]
+[ext_resource type="PackedScene" uid="uid://bfcuhf42vqkg8" path="res://Assets/Cenas/playfield.tscn" id="3_v5p32"]
+[ext_resource type="PackedScene" uid="uid://87kwyp2qpj80" path="res://Assets/Shaders/speedlines.tscn" id="4_87mju"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f8iii"]
 panorama = ExtResource("2_w78kr")
@@ -13,20 +15,20 @@ sky_material = SubResource("PanoramaSkyMaterial_f8iii")
 [sub_resource type="Environment" id="Environment_mbgdm"]
 background_mode = 2
 sky = SubResource("Sky_w61hc")
-ambient_light_source = 3
-reflected_light_source = 2
+ambient_light_source = 2
+ambient_light_sky_contribution = 0.0
 ssao_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
-volumetric_fog_emission_energy = 0.0
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0eikx"]
+glow_intensity = 2.0
+glow_strength = 2.0
+glow_hdr_threshold = 0.0
 
 [node name="Space" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dcpj7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -8)
 
 [node name="SceneCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -37,17 +39,9 @@ environment = SubResource("Environment_mbgdm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
-[node name="Playfield" type="StaticBody3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -3.74431)
-collision_layer = 2
-
-[node name="Boundary1" type="CollisionShape3D" parent="Playfield"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.322437)
-shape = SubResource("WorldBoundaryShape3D_0eikx")
-
-[node name="Boundary2" type="CollisionShape3D" parent="Playfield"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -14.034)
-shape = SubResource("WorldBoundaryShape3D_0eikx")
+[node name="Playfield" parent="." instance=ExtResource("3_v5p32")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_u8fmw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -400)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
+
+[node name="Speedlines" parent="." instance=ExtResource("4_87mju")]

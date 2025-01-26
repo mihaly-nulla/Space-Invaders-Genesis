@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var main = get_tree().current_scene
+@onready var timer = $Timer
 var Enemy = preload("res://Assets/Modelos/Enemy.tscn")
 func spawn():
 	var spawned_enemy = Enemy.instantiate()
@@ -11,3 +12,6 @@ func spawn():
 
 func _on_timer_timeout():
 	spawn()
+	if timer.wait_time >= 0.2:
+		timer.wait_time -= .1
+	

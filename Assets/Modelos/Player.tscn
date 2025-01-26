@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1lrhd8q2bbk2"]
+[gd_scene load_steps=6 format=3 uid="uid://b1lrhd8q2bbk2"]
 
 [ext_resource type="PackedScene" uid="uid://b618y83uev13h" path="res://Assets/Modelos/models/ship_2.tscn" id="2_2vud7"]
 [ext_resource type="Script" path="res://Assets/Scripts/MovementSystem/movement_controller.gd" id="2_wakya"]
+[ext_resource type="Material" uid="uid://bx162vcuwf8c1" path="res://Assets/Shaders/engine_flame.tres" id="3_7dnpo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ywaig"]
+radius = 2.0
+height = 4.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03m5k"]
 size = Vector3(3, 1, 3)
@@ -23,6 +28,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.859, 0, -2.376)
 
 [node name="Ship2" parent="PlayerMeshRoot" instance=ExtResource("2_2vud7")]
 transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0, 0, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerMeshRoot/Ship2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60472, -1.29782, -35.1892)
+mesh = SubResource("SphereMesh_ywaig")
+surface_material_override/0 = ExtResource("3_7dnpo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlayerMeshRoot/Ship2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62931, -1.29782, -35.1892)
+mesh = SubResource("SphereMesh_ywaig")
+surface_material_override/0 = ExtResource("3_7dnpo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="PlayerMeshRoot/Ship2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.30439, 2.3115, -37.1969)
+mesh = SubResource("SphereMesh_ywaig")
+surface_material_override/0 = ExtResource("3_7dnpo")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="PlayerMeshRoot/Ship2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87725, 2.3115, -37.1969)
+mesh = SubResource("SphereMesh_ywaig")
+surface_material_override/0 = ExtResource("3_7dnpo")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="PlayerMeshRoot/Ship2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7064, 1.66297, -34.9216)
+mesh = SubResource("SphereMesh_ywaig")
+surface_material_override/0 = ExtResource("3_7dnpo")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="PlayerMeshRoot/Ship2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.698, 1.94709, -34.9215)
+mesh = SubResource("SphereMesh_ywaig")
+surface_material_override/0 = ExtResource("3_7dnpo")
 
 [node name="CollisionBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
