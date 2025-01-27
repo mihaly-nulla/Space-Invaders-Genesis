@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var enemy_speed = randf_range(20,1000)
-var enemy_accel = randf_range(0.25,2.0)
+var enemy_accel = randf_range(0.25,4.0)
 
 var velocity_vector : Vector3
 @onready var main = get_tree().current_scene 

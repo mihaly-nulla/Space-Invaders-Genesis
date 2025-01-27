@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2v8g5mqb3xi6"]
+[gd_scene load_steps=11 format=3 uid="uid://c2v8g5mqb3xi6"]
 
 [ext_resource type="PackedScene" uid="uid://b1lrhd8q2bbk2" path="res://Assets/Modelos/Player.tscn" id="1_dcpj7"]
 [ext_resource type="Texture2D" uid="uid://b27hhjmkpd18y" path="res://Assets/Cenas/Space/Skybox/panorama_image.png" id="2_w78kr"]
 [ext_resource type="PackedScene" uid="uid://b2e4iaulufxxs" path="res://Assets/Modelos/EnemySpawner.tscn" id="3_u8fmw"]
 [ext_resource type="PackedScene" uid="uid://bfcuhf42vqkg8" path="res://Assets/Cenas/playfield.tscn" id="3_v5p32"]
 [ext_resource type="PackedScene" uid="uid://87kwyp2qpj80" path="res://Assets/Shaders/speedlines.tscn" id="4_87mju"]
+[ext_resource type="PackedScene" uid="uid://bkl70ygy5h82o" path="res://Assets/Cenas/kill_score.tscn" id="6_7bx7y"]
+[ext_resource type="AudioStream" uid="uid://dmp0f276xq00r" path="res://Assets/Sounds/Ace Combat Zero Ost.mp3" id="7_wwrk8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f8iii"]
 panorama = ExtResource("2_w78kr")
@@ -21,7 +23,7 @@ ssao_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
-glow_intensity = 2.0
+glow_intensity = 0.5
 glow_strength = 2.0
 glow_hdr_threshold = 0.0
 
@@ -45,3 +47,10 @@ environment = SubResource("Environment_mbgdm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
 
 [node name="Speedlines" parent="." instance=ExtResource("4_87mju")]
+
+[node name="KillScore" parent="." instance=ExtResource("6_7bx7y")]
+
+[node name="SceneMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wwrk8")
+volume_db = -15.0
+autoplay = true

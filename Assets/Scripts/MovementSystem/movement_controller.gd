@@ -14,8 +14,10 @@ const MINIMUM_BOOST_DISTANCE = 5.0
 var direction_vector : Vector3
 var velocity_vector : Vector3
 var THROTTLE_VALUE = 0.0
+var score : int = 0
 
-@onready var guns = [$/root/Space/Player/Gun1, $/root/Space/Player/Gun2]
+@onready var guns = [$/root/Space/Player/Gun1]
+@export var gun_sounds : AudioStreamPlayer
 @onready var main = get_tree().current_scene
 var Bullet = preload("res://Assets/Modelos/PlayerBullet.tscn")
 
@@ -54,5 +56,6 @@ func _input(event):
 	if event.is_action("shoot_guns"):
 		for gun in guns:
 			var bullet = Bullet.instantiate()
+			gun_sounds.play()
 			main.add_child(bullet)
 			bullet.global_transform = gun.global_transform

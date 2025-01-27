@@ -12,8 +12,8 @@ noise = SubResource("FastNoiseLite_7to2y")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qu13"]
 shader = ExtResource("1_btnim")
 shader_parameter/line_color = Color(0.907942, 0.907942, 0.907942, 1)
-shader_parameter/line_count = 2.0
-shader_parameter/line_density = 0.3
+shader_parameter/line_count = 0.55
+shader_parameter/line_density = 0.289
 shader_parameter/line_faloff = 0.4
 shader_parameter/mask_size = 0.1
 shader_parameter/mask_edge = 0.5

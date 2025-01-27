@@ -14,4 +14,7 @@ func _on_timer_timeout():
 	spawn()
 	if timer.wait_time >= 0.2:
 		timer.wait_time -= .1
+	else: 
+		spawn()
+
 	

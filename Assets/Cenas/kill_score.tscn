@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkl70ygy5h82o"]
+
+[ext_resource type="Script" path="res://Assets/Cenas/kill_score.gd" id="1_oou8v"]
+[ext_resource type="FontFile" uid="uid://dm2tmfiao8ak5" path="res://Assets/Fontes/SPACE.ttf" id="2_xkaww"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n14od"]
+font = ExtResource("2_xkaww")
+font_size = 42
+
+[node name="KillScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oou8v")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_n14od")
